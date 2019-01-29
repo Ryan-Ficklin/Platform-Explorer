@@ -24,16 +24,6 @@ function setup() {
     yel = color(255, 255, 0);
 }
 
-function draw() {
-    background(255);
-    fill(255, 0, 0);
-    ellipse(mouseX, mouseY, 80, 80);
-}
-
-
-
-
-
 function drawCharacter() {
     background(100, 155, 255);
     noStroke();
