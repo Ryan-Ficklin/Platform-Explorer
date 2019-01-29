@@ -25,7 +25,6 @@ function setup() {
 }
 
 function drawCharacter() {
-    background(100, 155, 255);
     noStroke();
     push();
     translate(x, y);
@@ -127,6 +126,7 @@ function collisions() {
 }
 
 function draw() {
+	background(255);
     drawCharacter();
     drawSquares();
     drawInstructions();
