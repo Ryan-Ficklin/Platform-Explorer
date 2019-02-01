@@ -1,4 +1,5 @@
 var TF1, TF2, random1, random2;
+var UpMovement, DownMovement, LeftMovement, RightMovement = false;
 var r, g, b, yel;
 var score = 0;
 var x = 500;
@@ -12,7 +13,7 @@ var op = 255;
 var op1 = 0;
 
 function setup() {
-    createCanvas(800, 600);
+    createCanvas(1000, 1000);
     noStroke();
     TF1 = random(1, 3);
     TF2 = random(1, 3);
@@ -47,32 +48,53 @@ function drawCharacter() {
     ellipse(x - 10, y - 10, z / 5, z / 5);
     ellipse(x + 10, y - 10, z / 5, z / 5);
     ellipse(x, y + 10, z / 3, z / 4);
-    
-    if (keyIsPressed) {
-        if (key == 'd') {
+	
+    }
+
+function characterMove(){
+ if (RightMovement === true) {
             x += s;
             t += ts;
+    }
+
+    if (LeftMovement === true) {
+            x -= s;
+            t += ts;
+        }
+    
+
+    if (UpMovement === true) {
+            y -= s;
+            t += ts;
+        }
+    
+
+    if (DownMovement === true) {
+            y += s;
+            t += ts;
+        }
+	
+    if (keyIsPressed) {
+        if (key == 'd') {
+            RightMovement = true;
         }
     }
 
     if (keyIsPressed) {
         if (key == 'a') {
-            x -= s;
-            t += ts;
+            LeftMovement = true;
         }
     }
 
     if (keyIsPressed) {
         if (key == 'w') {
-            y -= s;
-            t += ts;
+            UpMovement = true;
         }
     }
 
     if (keyIsPressed) {
         if (key == 's') {
-            y += s;
-            t += ts;
+            DownMovement = true;
         }
     }
 
@@ -81,10 +103,11 @@ function drawCharacter() {
             x += 0;
             y += 0;
             t += ts;
-        }
-    }
+        }	
 
-    constrain(x, 0, screen.width);
+}
+    //x = constrain(x, 0, screen.width);
+	//y = constrain(y,0,sceen.height);
 }
 
 
@@ -126,9 +149,10 @@ function collisions() {
 }
 
 function draw() {
-	background(255);
+	background(0,200,255);
     drawCharacter();
     drawSquares();
     drawInstructions();
     collisions();
+	characterMove();
 }
