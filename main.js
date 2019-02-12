@@ -1,10 +1,10 @@
 var TF1, TF2, random1, random2;
-var UpMovement, DownMovement, LeftMovement, RightMovement = false;
+var upMovement, downMovement, leftMovement, rightMovement = false;
 var r, g, b, yel;
 var score = 0;
-var x = 500;
-var y = 500;
-var s = 5;
+var characterX = 500;
+var characterY = 500;
+var characterSize = 5;
 var z = 50;
 var pos = 50;
 var t = 0;
@@ -28,7 +28,7 @@ function setup() {
 function drawCharacter() {
     noStroke();
     push();
-    translate(x, y);
+    translate(characterX, characterY);
     rotate(t);
     fill(0);
     rectMode(CENTER);
@@ -43,34 +43,34 @@ function drawCharacter() {
     rect(-pos, -pos, z, z);
     pop();
     fill(255);
-    ellipse(x, y, z, z);
+    ellipse(characterX, characterY, z, z);
     fill(0);
-    ellipse(x - 10, y - 10, z / 5, z / 5);
-    ellipse(x + 10, y - 10, z / 5, z / 5);
-    ellipse(x, y + 10, z / 3, z / 4);
+    ellipse(characterX - 10, characterY - 10, z / 5, z / 5);
+    ellipse(characterX + 10, characterY - 10, z / 5, z / 5);
+    ellipse(characterX, characterY + 10, z / 3, z / 4);
 	
     }
 
 function characterMove(){
  if (RightMovement === true) {
-            x += s;
+            characterX += s;
             t += ts;
     }
 
     if (LeftMovement === true) {
-            x -= s;
+            characterX -= s;
             t += ts;
         }
     
 
     if (UpMovement === true) {
-            y -= s;
+            characterX -= s;
             t += ts;
         }
     
 
     if (DownMovement === true) {
-            y += s;
+            characterX += s;
             t += ts;
         }
 	
@@ -100,8 +100,8 @@ function characterMove(){
 
     if (keyIsPressed) {
         if (key == 'p') {
-            x += 0;
-            y += 0;
+            characterX += 0;
+            characterY += 0;
             t += ts;
         }	
 
@@ -138,7 +138,7 @@ function drawInstructions() {
 }
 
 function collisions() {
-    if (((random1 - 10 < x + 50) && (random1 + 10 > x - 50)) && ((random2 - 10 < y + 50) && (random2 + 10 > y - 50))) {
+    if (((random1 - 10 < characterX + 50) && (random1 + 10 > characterX - 50)) && ((random2 - 10 < characterY + 50) && (random2 + 10 > characterY - 50))) {
         random1 = random(0, 700);
         random2 = random(0, 400);
         TF1 = random(1, 3);
