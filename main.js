@@ -7,8 +7,8 @@ var characterY = 500;
 var characterSize = 5;
 var z = 50;
 var pos = 50;
-var t = 0;
-var ts = .05;
+var rotation = 0;
+var rotationSpeed = .05;
 var op = 255;
 var op1 = 0;
 
@@ -29,7 +29,7 @@ function drawCharacter() {
     noStroke();
     push();
     translate(characterX, characterY);
-    rotate(t);
+    rotate(rotation);
     fill(0);
     rectMode(CENTER);
     rect(0, 0, 100, 100);
@@ -52,49 +52,49 @@ function drawCharacter() {
     }
 
 function characterMove(){
- if (RightMovement === true) {
+ if (rightMovement === true) {
             characterX += s;
-            t += ts;
+            rotation += ts;
     }
 
-    if (LeftMovement === true) {
+    if (leftMovement === true) {
             characterX -= s;
-            t += ts;
+            rotation += ts;
         }
     
 
-    if (UpMovement === true) {
+    if (upMovement === true) {
             characterX -= s;
-            t += ts;
+            rotation += ts;
         }
     
 
-    if (DownMovement === true) {
+    if (downMovement === true) {
             characterX += s;
-            t += ts;
+            rotation += ts;
         }
 	
     if (keyIsPressed) {
         if (key == 'd') {
-            RightMovement = true;
+            rightMovement = true;
         }
     }
 
     if (keyIsPressed) {
         if (key == 'a') {
-            LeftMovement = true;
+            leftMovement = true;
         }
     }
 
     if (keyIsPressed) {
         if (key == 'w') {
-            UpMovement = true;
+            upMovement = true;
         }
     }
 
     if (keyIsPressed) {
         if (key == 's') {
-            DownMovement = true;
+            downMovement = true;
         }
     }
 
@@ -102,7 +102,7 @@ function characterMove(){
         if (key == 'p') {
             characterX += 0;
             characterY += 0;
-            t += ts;
+            rotation += ts;
         }	
 
 }
